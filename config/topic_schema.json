@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Topic Configuration Schema",
+  "description": "Schema for validating lesson topic configurations",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name of the topic",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-safe identifier for the topic",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the topic",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced"],
+          "description": "Target difficulty level"
+        },
+        "estimated_hours": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 40,
+          "description": "Estimated completion time in hours"
+        },
+        "concepts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "maxItems": 15,
+          "description": "Key concepts covered in the topic"
+        },
+        "learning_objectives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 10
+          },
+          "minItems": 2,
+          "maxItems": 10,
+          "description": "What students will learn"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "maxItems": 10,
+          "description": "Required knowledge before starting"
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "type": {
+                "type": "string",
+                "enum": ["starter", "assignment", "project", "extra"],
+                "description": "Type of module content"
+              },
+              "focus_areas": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "maxItems": 5
+              },
+              "code_complexity": {
+                "type": "string",
+                "enum": ["simple", "moderate", "complex"],
+                "description": "Complexity level of code examples"
+              }
+            },
+            "required": ["name", "type", "focus_areas", "code_complexity"],
+            "additionalProperties": false
+          },
+          "minItems": 3,
+          "maxItems": 10,
+          "description": "Modules that make up the topic"
+        }
+      },
+      "required": [
+        "name", 
+        "slug", 
+        "description", 
+        "difficulty", 
+        "estimated_hours", 
+        "concepts", 
+        "learning_objectives",
+        "modules"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": ["topic"],
+  "additionalProperties": false
+}

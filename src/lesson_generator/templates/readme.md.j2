@@ -1,0 +1,169 @@
+# {{ topic.name }}
+
+{{ topic.description }}
+
+{% if topic.difficulty %}
+**Difficulty**: {{ topic.difficulty|title }}  
+{% endif %}
+{% if topic.estimated_hours %}
+**Estimated Time**: {{ topic.estimated_hours }} hours  
+{% endif %}
+
+## 📚 Learning Objectives
+
+{% for objective in topic.learning_objectives %}
+- {{ objective }}
+{% endfor %}
+
+{% if topic.prerequisites %}
+## 📋 Prerequisites
+
+{% for prereq in topic.prerequisites %}
+- {{ prereq }}
+{% endfor %}
+{% endif %}
+
+## 🎯 Course Structure
+
+{% for i, module in enumerate(topic.modules) %}
+### {{ loop.index }}. {{ module.name }}
+{% if module.focus_areas %}
+**Focus Areas**: {{ module.focus_areas|join(", ") }}
+{% endif %}
+{% if module.type %}
+**Type**: {{ module.type|title }}
+{% endif %}
+{% endfor %}
+
+## 🚀 Getting Started
+
+### Environment Setup
+
+1. **Clone this repository**:
+   ```bash
+   git clone <repository-url>
+   cd {{ topic.slug }}
+   ```
+
+2. **Create and activate virtual environment**:
+   ```bash
+   # Using venv
+   python -m venv {{ topic.slug }}_env
+   source {{ topic.slug }}_env/bin/activate  # Linux/Mac
+   # or
+   {{ topic.slug }}_env\Scripts\activate  # Windows
+
+   # Using conda
+   conda create -n {{ topic.slug }} python=3.8+
+   conda activate {{ topic.slug }}
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Verify setup**:
+   ```bash
+   python -m pytest --version
+   make test  # or pytest
+   ```
+
+### Learning Path
+
+1. **Start with Module 1**: Begin with the fundamentals
+2. **Follow the sequence**: Each module builds on the previous
+3. **Complete all assignments**: Both A and B parts
+4. **Run tests frequently**: Ensure your code works
+5. **Review and refactor**: Improve your solutions
+
+## 📁 Project Structure
+
+```
+{{ topic.slug }}/
+├── README.md                     # This file
+├── requirements.txt              # Python dependencies
+├── pytest.ini                   # Test configuration
+├── Makefile                      # Common commands
+├── setup.cfg                     # Tool configurations
+{% for module in topic.modules %}
+├── module_{{ module.name|lower|replace(' ', '_') }}/
+│   ├── README.md                 # Module learning path
+│   ├── starter_example.py       # Guided example
+│   ├── test_starter_example.py  # Example tests
+│   ├── assignment_a.py          # Code to test
+│   ├── test_assignment_a.py     # Write tests here
+│   ├── assignment_b.py          # Implement this
+│   ├── test_assignment_b.py     # Tests to pass
+│   └── extra_exercises.md       # Additional practice
+{% endfor %}
+└── .github/
+    └── workflows/
+        └── python-tests.yml      # CI/CD pipeline
+```
+
+## 🧪 Testing Your Progress
+
+Run all tests:
+```bash
+make test
+# or
+pytest
+```
+
+Run tests for a specific module:
+```bash
+pytest module_*/test_*.py
+```
+
+Check code coverage:
+```bash
+pytest --cov=. --cov-report=html
+```
+
+## 📚 Learning Resources
+
+### Key Concepts Covered
+{% for concept in topic.concepts %}
+- **{{ concept|title }}**
+{% endfor %}
+
+### Recommended Reading
+- Official Python documentation
+- Relevant PEPs (Python Enhancement Proposals)
+- Community best practices guides
+
+### Practice Opportunities
+- Complete all module assignments
+- Work through extra exercises
+- Apply concepts to personal projects
+- Contribute to open source projects
+
+## 🎯 Success Metrics
+
+By the end of this course, you should be able to:
+{% for objective in topic.learning_objectives %}
+- ✅ {{ objective }}
+{% endfor %}
+
+## 🆘 Getting Help
+
+- **Module READMEs**: Each module has detailed learning paths
+- **Code Comments**: Examples include extensive documentation
+- **Test Cases**: Tests show expected behavior
+- **Extra Exercises**: Additional practice with hints
+
+## 🏆 Completion
+
+To complete this course:
+1. ✅ Finish all {{ topic.modules|length }} modules
+2. ✅ Pass all test suites
+3. ✅ Complete extra exercises
+4. ✅ Review and refactor your code
+5. ✅ Apply concepts to a real project
+
+---
+
+**Course Generated**: {{ generated_date }}  
+**Generator Version**: {{ generator_version }}
+{% if ai_model_used %}**AI Model**: {{ ai_model_used }}{% endif %}

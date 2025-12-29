@@ -1,0 +1,56 @@
+# {{ module.name }} - Learning Path
+
+## 🎯 Learning Objectives
+
+By the end of this module, you will understand:
+{% for objective in learning_objectives %}
+- {{ objective }}
+{% endfor %}
+
+---
+
+## 📚 Introduction
+
+{{ description }}
+
+## 🔑 Key Concepts
+
+{% for concept in concepts %}
+- **{{ concept|title }}**: {{ concept_descriptions[concept] if concept_descriptions else "Core concept in " + topic.name.lower() }}
+{% endfor %}
+
+## 💻 Hands-On Practice
+
+This module includes:
+- **Starter Example**: Guided introduction with complete code
+- **Assignment A**: Write tests for provided code
+- **Assignment B**: Implement code to pass provided tests
+- **Extra Exercises**: Additional practice problems
+
+## 🚀 Getting Started
+
+1. Review the starter example (`starter_example.py`)
+2. Run the starter tests: `pytest test_starter_example.py`
+3. Complete Assignment A by writing tests in `test_assignment_a.py`
+4. Complete Assignment B by implementing `assignment_b.py`
+5. Try the extra exercises for additional practice
+
+## 📋 Success Criteria
+
+- [ ] Understand the key concepts listed above
+- [ ] Complete all assignments with passing tests
+- [ ] Implement clean, readable code following best practices
+- [ ] Document your learning in comments and docstrings
+
+## 🔗 Next Steps
+
+After completing this module:
+- Review your solutions and refactor if needed
+- Compare your approach with provided solutions (if available)
+- Move on to the next module
+- Apply these concepts to real-world projects
+
+---
+
+**Estimated Time**: {{ estimated_time }} minutes  
+**Difficulty**: {{ difficulty|title }}

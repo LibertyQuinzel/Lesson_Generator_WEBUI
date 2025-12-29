@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Generator - Web Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .btn {
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        .progress {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #10b981;
+            border-radius: 4px;
+            transition: width 0.3s;
+            width: 0%;
+        }
+        
+        .status-message {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .result.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .result.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        
+        .api-links {
+            list-style: none;
+        }
+        
+        .api-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .api-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .api-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .topics-input {
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Lesson Generator</h1>
+            <p>AI-powered lesson generator for programming courses</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h2>📚 Generate Programming Lessons</h2>
+                <form id="lessonForm">
+                    <div class="form-group">
+                            <label for="topics">Topics (Each topic creates one lesson):</label>
+                            <textarea 
+                                id="topics" 
+                                name="topics" 
+                                class="topics-input"
+                                rows="4"
+                                placeholder="e.g. Python List Comprehensions\nDesign Patterns\nError Handling"
+                            ></textarea>
+                            <small>List the topics you wish to create lessons for. Enter each topic on a separate line.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty Level:</label>
+                        <select id="difficulty" name="difficulty">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate" selected>Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modules">Number of Modules (per lesson):</label>
+                        <input type="number" id="modules" name="modules" value="3" min="1" max="10">
+                        <small>Number of modules in each lesson</small>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="generateBtn">
+                        Generate Lessons
+                    </button>
+                </form>
+                
+                <div id="progress" class="progress">
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <div id="statusMessage" class="status-message">
+                        Initializing lesson generation...
+                    </div>
+                </div>
+                
+                <div id="result" class="result">
+                    <div id="resultMessage"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>📖 API Documentation</h2>
+                <p>Access the interactive API documentation and explore all available endpoints:</p>
+                <ul class="api-links">
+                    <li><a href="/api/docs" target="_blank">📋 Swagger UI Documentation</a></li>
+                    <li><a href="/api/redoc" target="_blank">📚 ReDoc Documentation</a></li>
+                    <li><a href="/api/openapi.json" target="_blank">🔧 OpenAPI JSON Schema</a></li>
+                    <li><a href="/api/v1/system/health" target="_blank">💚 System Health Check</a></li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🚀 Quick API Examples</h3>
+                <p style="margin-bottom: 1rem;">Generate lessons via API:</p>
+                <pre style="background: #f3f4f6; padding: 1rem; border-radius: 8px; font-size: 0.85rem; overflow-x: auto;">curl -X POST "http://localhost:8000/api/v1/lessons/generate" \
+     -H "Content-Type: application/json" \
+     -d '{
+         "topics": ["python_fundamentals"],
+         "difficulty": "intermediate"
+     }'</pre>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📊 System Status</h2>
+            <div id="systemStatus">
+                <p>Loading system information...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentLessonId = null;
+        let statusCheckInterval = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSystemStatus();
+            
+            document.getElementById('lessonForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                generateLessons();
+            });
+        });
+        
+        async function generateLessons() {
+            const form = document.getElementById('lessonForm');
+            const formData = new FormData(form);
+            
+            const topics = formData.get('topics').split('\n').filter(t => t.trim());
+            const difficulty = formData.get('difficulty');
+            const modules = parseInt(formData.get('modules'));
+            
+            if (topics.length === 0) {
+                showResult('Please enter at least one topic', 'error');
+                return;
+            }
+            
+            const requestData = {
+                topics: topics,
+                difficulty: difficulty,
+                modules: modules,
+                config: {
+                    use_ai: true
+                }
+            };
+            
+            try {
+                showProgress();
+                document.getElementById('generateBtn').disabled = true;
+                
+                const response = await fetch('/api/v1/lessons/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    currentLessonId = result.lesson_id;
+                    updateProgress(0, result.message);
+                    startStatusPolling();
+                } else {
+                    throw new Error(result.message || 'Generation failed');
+                }
+            } catch (error) {
+                hideProgress();
+                showResult('Error: ' + error.message, 'error');
+                document.getElementById('generateBtn').disabled = false;
+            }
+        }
+        
+        function startStatusPolling() {
+            if (statusCheckInterval) {
+                clearInterval(statusCheckInterval);
+            }
+            
+            statusCheckInterval = setInterval(async () => {
+                if (!currentLessonId) return;
+                
+                try {
+                    const response = await fetch(`/api/v1/lessons/${currentLessonId}/status`);
+                    const status = await response.json();
+                    
+                    if (response.ok) {
+                        const progress = status.progress?.percentage || 0;
+                        const message = status.progress?.current_step || status.message || 'Processing...';
+                        
+                        updateProgress(progress, message);
+                        
+                        if (status.status === 'completed') {
+                            clearInterval(statusCheckInterval);
+                            showCompletionResult(status);
+                            document.getElementById('generateBtn').disabled = false;
+                        } else if (status.status === 'failed') {
+                            clearInterval(statusCheckInterval);
+                            hideProgress();
+                            const errorMsg = status.error_message || 'Unknown error';
+                            let detailedMsg = 'Generation failed: ' + errorMsg;
+                            
+                            // Add helpful tips based on error type
+                            if (errorMsg.includes('syntax')) {
+                                detailedMsg += '\n\nTip: This may be due to template issues. The system has been updated to fix common syntax errors automatically.';
+                            } else if (errorMsg.includes('API key')) {
+                                detailedMsg += '\n\nTip: Please check your OpenAI API key configuration.';
+                            }
+                            
+                            showResult(detailedMsg, 'error');
+                            document.getElementById('generateBtn').disabled = false;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Status check error:', error);
+                }
+            }, 2000); // Check every 2 seconds
+        }
+        
+        function showProgress() {
+            document.getElementById('progress').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+        }
+        
+        function hideProgress() {
+            document.getElementById('progress').style.display = 'none';
+        }
+        
+        function updateProgress(percentage, message) {
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('statusMessage').textContent = message;
+        }
+        
+        function showCompletionResult(status) {
+            hideProgress();
+            
+            const downloadUrl = `/api/v1/lessons/${currentLessonId}/download`;
+            const message = `
+                <strong>Lessons generated successfully!</strong><br>
+                <a href="${downloadUrl}" class="btn" style="display: inline-block; margin-top: 1rem; text-decoration: none;">
+                    📥 Download Lessons
+                </a>
+            `;
+            
+            showResult(message, 'success');
+            currentLessonId = null;
+        }
+        
+        function showResult(message, type) {
+            const result = document.getElementById('result');
+            const resultMessage = document.getElementById('resultMessage');
+            
+            resultMessage.innerHTML = message;
+            result.className = 'result ' + type;
+            result.style.display = 'block';
+        }
+        
+        async function loadSystemStatus() {
+            try {
+                const response = await fetch('/api/v1/system/health');
+                const health = await response.json();
+                
+                const statusHtml = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div>
+                            <strong>Status:</strong> 
+                            <span style="color: ${health.status === 'healthy' ? '#059669' : '#dc2626'}">
+                                ${health.status.toUpperCase()}
+                            </span>
+                        </div>
+                        <div><strong>Version:</strong> ${health.version}</div>
+                        <div><strong>Uptime:</strong> ${Math.round(health.uptime / 60)} minutes</div>
+                        <div>
+                            <strong>OpenAI API:</strong> 
+                            <span style="color: ${health.openai_api_available ? '#059669' : '#dc2626'}">
+                                ${health.openai_api_available ? 'Available' : 'Unavailable'}
+                            </span>
+                        </div>
+                        <div>
+                            <strong>Storage:</strong> 
+                            <span style="color: ${health.storage_available ? '#059669' : '#dc2626'}">
+                                ${health.storage_available ? 'Available' : 'Unavailable'}
+                            </span>
+                        </div>
+                        <div><strong>Active Generations:</strong> ${health.active_generations}</div>
+                    </div>
+                `;
+                
+                document.getElementById('systemStatus').innerHTML = statusHtml;
+            } catch (error) {
+                document.getElementById('systemStatus').innerHTML = 
+                    '<p style="color: #dc2626;">Unable to load system status</p>';
+            }
+        }
+    </script>
+</body>
+</html>

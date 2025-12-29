@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Swiss International Design System Colors */
+  --swiss-black: #000000;
+  --swiss-white: #ffffff;
+  --swiss-gray-100: #f8f9fa;
+  --swiss-gray-200: #e9ecef;
+  --swiss-gray-300: #dee2e6;
+  --swiss-gray-400: #ced4da;
+  --swiss-gray-500: #adb5bd;
+  --swiss-gray-600: #6c757d;
+  --swiss-gray-700: #495057;
+  --swiss-gray-800: #343a40;
+  --swiss-gray-900: #212529;
+  --swiss-red: #dc2626;
+  --swiss-blue: #2563eb;
+  
+  /* Typography Scale */
+  --swiss-text-xs: 0.75rem;
+  --swiss-text-sm: 0.875rem;
+  --swiss-text-base: 1rem;
+  --swiss-text-lg: 1.125rem;
+  --swiss-text-xl: 1.25rem;
+  --swiss-text-2xl: 1.5rem;
+  --swiss-text-3xl: 1.875rem;
+  --swiss-text-4xl: 2.25rem;
+  
+  /* Spacing Scale (8px base grid) */
+  --swiss-space-1: 0.5rem;  /* 8px */
+  --swiss-space-2: 1rem;    /* 16px */
+  --swiss-space-3: 1.5rem;  /* 24px */
+  --swiss-space-4: 2rem;    /* 32px */
+  --swiss-space-5: 2.5rem;  /* 40px */
+  --swiss-space-6: 3rem;    /* 48px */
+  --swiss-space-8: 4rem;    /* 64px */
+  --swiss-space-10: 5rem;   /* 80px */
+  
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #fafafa !important;
+  background-image: 
+    linear-gradient(#e5e7eb 1px, transparent 1px),
+    linear-gradient(90deg, #e5e7eb 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+  background-position: 0 0 !important;
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Swiss design scrollbar styling */
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--swiss-gray-300) transparent;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--swiss-gray-300);
+  border-radius: 0;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: var(--swiss-gray-500);
+}
+
+/* Swiss design background patterns - apply to body element */
+
+/* Current active pattern: Subtle dots */
+.swiss-bg-dots {
+  background-color: #fafafa !important;
+  background-image: radial-gradient(circle at 1px 1px, #e5e7eb 1px, transparent 0) !important;
+  background-size: 20px 20px !important;
+}
+
+/* Alternative patterns */
+.swiss-bg-grid {
+  background-color: #ffffff !important;
+  background-image: 
+    linear-gradient(#f1f3f4 1px, transparent 1px),
+    linear-gradient(90deg, #f1f3f4 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+}
+
+.swiss-bg-fine-grid {
+  background-color: #ffffff !important;
+  background-image: 
+    linear-gradient(#f8f9fa 0.5px, transparent 0.5px),
+    linear-gradient(90deg, #f8f9fa 0.5px, transparent 0.5px) !important;
+  background-size: 16px 16px !important;
+}
+
+.swiss-bg-large-grid {
+  background-color: #ffffff !important;
+  background-image: 
+    linear-gradient(#e5e7eb 1px, transparent 1px),
+    linear-gradient(90deg, #e5e7eb 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
+}
+
+.swiss-bg-diagonal {
+  background-color: #ffffff !important;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 15px,
+    #f8f9fa 15px,
+    #f8f9fa 16px
+  ) !important;
+}
+
+.swiss-bg-clean {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Component-level patterns (for cards, sections) */
+.swiss-pattern-dots {
+  background-image: radial-gradient(circle at 1px 1px, #e9ecef 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+.swiss-pattern-grid {
+  background-image: 
+    linear-gradient(#f8f9fa 1px, transparent 1px),
+    linear-gradient(90deg, #f8f9fa 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Swiss card styling */
+.swiss-card {
+  background: var(--swiss-white);
+  border: 1px solid var(--swiss-gray-200);
+  transition: border-color 200ms ease-out;
+}
+
+.swiss-card:hover {
+  border-color: var(--swiss-gray-300);
+}
+
+/* Swiss focus states */
+.swiss-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--swiss-black);
+}

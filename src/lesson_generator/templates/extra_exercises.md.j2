@@ -1,0 +1,129 @@
+# Extra Exercises: {{ module.name }}
+
+## 🎯 Objective
+Reinforce your understanding of {{ topic.name.lower() }} through additional hands-on practice.
+
+## 📚 Covered Concepts
+{% for concept in module.focus_areas %}
+- {{ concept|title }}
+{% endfor %}
+
+---
+
+## 🚀 Exercises
+
+### Exercise 1: Basic Implementation
+**Difficulty**: {% if topic.difficulty == "beginner" %}⭐{% elif topic.difficulty == "intermediate" %}⭐⭐{% else %}⭐⭐⭐{% endif %}
+
+{{ exercise_1_description if exercise_1_description else "Practice the fundamental concepts from this module with a guided exercise." }}
+
+**Task**:
+{{ exercise_1_task if exercise_1_task else "1. Review the starter example\n2. Modify the code to add new functionality\n3. Write tests for your changes\n4. Ensure all tests pass" }}
+
+**Hints**:
+{{ exercise_1_hints if exercise_1_hints else "- Start with small changes\n- Write tests first (TDD approach)\n- Use descriptive variable and method names\n- Add proper error handling" }}
+
+---
+
+### Exercise 2: Intermediate Challenge
+**Difficulty**: {% if topic.difficulty == "beginner" %}⭐⭐{% elif topic.difficulty == "intermediate" %}⭐⭐⭐{% else %}⭐⭐⭐⭐{% endif %}
+
+{{ exercise_2_description if exercise_2_description else "Apply the concepts in a more complex scenario that requires problem-solving skills." }}
+
+**Task**:
+{{ exercise_2_task if exercise_2_task else "1. Analyze the problem requirements\n2. Design a solution using the module concepts\n3. Implement your solution step by step\n4. Test thoroughly with edge cases" }}
+
+**Extension Ideas**:
+{{ exercise_2_extensions if exercise_2_extensions else "- Add input validation\n- Handle multiple data types\n- Optimize for performance\n- Add logging or debugging features" }}
+
+---
+
+### Exercise 3: Real-World Application
+**Difficulty**: {% if topic.difficulty == "beginner" %}⭐⭐⭐{% elif topic.difficulty == "intermediate" %}⭐⭐⭐⭐{% else %}⭐⭐⭐⭐⭐{% endif %}
+
+{{ exercise_3_description if exercise_3_description else "Create a practical application that demonstrates real-world usage of the module concepts." }}
+
+**Project Ideas**:
+{{ exercise_3_projects if exercise_3_projects else "- Build a command-line tool\n- Create a simple API\n- Develop a data processing script\n- Design a small web application" }}
+
+**Requirements**:
+{{ exercise_3_requirements if exercise_3_requirements else "- Use all key concepts from this module\n- Include comprehensive error handling\n- Write complete test coverage\n- Document your code thoroughly\n- Follow Python best practices" }}
+
+---
+
+## 🧪 Testing Your Solutions
+
+Create test files for your exercises:
+```bash
+# For Exercise 1
+touch test_exercise_1.py
+
+# For Exercise 2  
+touch test_exercise_2.py
+
+# For Exercise 3
+touch test_exercise_3.py
+```
+
+Run your tests:
+```bash
+pytest test_exercise_*.py -v
+```
+
+## 📋 Self-Assessment Checklist
+
+After completing the exercises, ensure you can:
+
+### Understanding
+- [ ] Explain the key concepts in your own words
+- [ ] Identify when to apply these concepts
+- [ ] Recognize common patterns and anti-patterns
+- [ ] Understand the trade-offs of different approaches
+
+### Implementation
+- [ ] Write clean, readable code using the concepts
+- [ ] Handle edge cases and error conditions appropriately
+- [ ] Follow Python coding conventions (PEP 8)
+- [ ] Use appropriate data structures and algorithms
+
+### Testing
+- [ ] Write comprehensive test cases
+- [ ] Achieve good test coverage
+- [ ] Test both happy paths and error conditions
+- [ ] Use meaningful test names and descriptions
+
+### Problem Solving
+- [ ] Break down complex problems into smaller parts
+- [ ] Design solutions before coding
+- [ ] Refactor code for better maintainability
+- [ ] Debug issues systematically
+
+## 🔗 Next Steps
+
+After completing these exercises:
+1. **Review Solutions**: Compare your approach with best practices
+2. **Refactor Code**: Improve your implementation based on learnings
+3. **Explore Further**: Research advanced topics related to this module
+4. **Apply Knowledge**: Use these concepts in personal projects
+5. **Share Learning**: Explain the concepts to others or write about them
+
+## 💡 Additional Resources
+
+### Documentation
+- Python official documentation for relevant modules
+- PEP documents related to the concepts
+- Community style guides and best practices
+
+### Practice Platforms
+- LeetCode problems related to the concepts
+- HackerRank challenges
+- Project Euler problems (for algorithmic concepts)
+
+### Further Reading
+- Relevant books on Python and software development
+- Blog posts from experienced developers
+- Conference talks on related topics
+
+---
+
+**Remember**: The goal is not just to complete the exercises, but to deeply understand the concepts and be able to apply them confidently in real-world scenarios.

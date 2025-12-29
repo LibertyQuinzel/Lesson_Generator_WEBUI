@@ -1,0 +1,120 @@
+"""
+{{ test_type|title if test_type else "Test" }} tests for {{ module.name if module else "Module" }}
+
+{% if test_type == "starter_example" %}
+Test file for the starter example.
+Run: pytest {{ filename if filename else "test_starter_example.py" }}
+{% elif test_type == "assignment_a" %}
+STUDENT TASK: Write comprehensive tests for assignment_a.py
+Focus on achieving 100% code coverage and testing edge cases.
+{% elif test_type == "assignment_b" %}
+Test file that students' code must pass.
+Students implement code in assignment_b.py to make these tests pass.
+{% else %}
+Test file for the module assignment.
+{% endif %}
+"""
+
+import pytest
+{% if imports %}
+{% for import_item in imports %}
+from {{ import_item.module }} import {{ import_item.items|join(", ") }}
+{% endfor %}
+{% endif %}
+
+
+{% if test_type == "assignment_a" %}
+# STUDENT TODO: Import your classes from assignment_a.py
+# from assignment_a import {{ class_name if class_name else "YourClassName" }}
+
+class Test{{ class_name if class_name else "Assignment" }}:
+    """
+    Test cases for {{ class_name if class_name else "Assignment" }}.
+    
+    INSTRUCTIONS:
+    1. Import the class from assignment_a.py
+    2. Write tests for all methods
+    3. Achieve 100% code coverage
+    4. Test edge cases and error conditions
+    5. Use meaningful test method names
+    6. Add docstrings to explain what each test does
+    """
+    
+    def setup_method(self):
+        """Set up test fixtures before each test method."""
+        # TODO: Initialize test objects here
+        pass
+    
+    # TODO: Write your test methods here
+    # Example:
+    # def test_method_name_with_valid_input(self):
+    #     """Test that method works with valid input."""
+    #     # Arrange
+    #     # Act  
+    #     # Assert
+    #     pass
+    
+    def test_placeholder(self):
+        """Remove this test once you add real tests."""
+        # This test exists so pytest doesn't complain about no tests
+        assert True
+
+{% else %}
+class Test{{ class_name }}:
+    """Test cases for {{ class_name }}."""
+    
+    def setup_method(self):
+        """Set up test fixtures before each test method."""
+        self.{{ instance_name }} = {{ class_name }}()
+    
+    {% for test_method in test_methods %}
+    def {{ test_method.name }}(self):
+        """{{ test_method.description }}"""
+        {% if test_method.setup %}
+        # Arrange
+        {{ test_method.setup }}
+        {% endif %}
+        
+        {% if test_method.action %}
+        # Act
+        {{ test_method.action }}
+        {% else %}
+        # Act & Assert
+        {% endif %}
+        
+        # Assert
+        {{ test_method.assertions }}
+    
+    {% endfor %}
+    
+    {% if error_test_methods %}
+    # Error condition tests
+    {% for error_test in error_test_methods %}
+    def {{ error_test.name }}(self):
+        """{{ error_test.description }}"""
+        with pytest.raises({{ error_test.exception_type }}):
+            {{ error_test.action }}
+    
+    {% endfor %}
+    {% endif %}
+{% endif %}
+
+
+{% if parametrized_tests %}
+# Parametrized tests for thorough coverage
+{% for param_test in parametrized_tests %}
+@pytest.mark.parametrize("{{ param_test.param_names|join(', ') }}", [
+    {% for test_case in param_test.test_cases %}
+    {{ test_case }},
+    {% endfor %}
+])
+def {{ param_test.method_name }}({{ param_test.param_names|join(', ') }}):
+    """{{ param_test.description }}"""
+    {{ param_test.test_body }}
+
+{% endfor %}
+{% endif %}
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

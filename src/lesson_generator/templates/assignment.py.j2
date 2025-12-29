@@ -1,0 +1,151 @@
+{% if not (content and content.strip()) %}
+"""
+{{ assignment_type|title if assignment_type else "Assignment" }}: {{ module.name if module else "Module" }}
+
+{{ description if description else "Assignment for " + (topic.name if topic else "lesson") }}
+
+Learning Objectives:
+{% if learning_objectives %}
+{% for objective in learning_objectives %}
+- {{ objective }}
+{% endfor %}
+{% else %}
+- Understand {{ topic.name if topic else "programming" }} concepts
+- Practice implementation and testing skills
+{% endif %}
+"""
+{% endif %}
+
+{% if assignment_type == "starter_example" %}
+# Starter Example for {{ module.name }}
+
+{% if content and content.strip() %}
+{{ content }}
+{% else %}
+class {{ class_name if class_name else "Assignment" }}:
+    """
+    {{ class_description if class_description else "Assignment class for practice" }}
+    
+    This is a starter example to demonstrate {{ topic.name.lower() if topic else "programming" }} concepts.
+    Study this code to understand the patterns and techniques used.
+    """
+    
+    def __init__(self):
+        """Initialize the {{ (class_name if class_name else "assignment").lower().replace('assignment', ' assignment') }}."""
+        {{ init_code if init_code else "pass" }}
+    
+    {% if methods %}
+    {% for method in methods %}
+    def {{ method.name }}(self{{ method.params if method.params else "" }}):
+        """
+        {{ method.description if method.description else "Method implementation" }}
+        
+        {% if method.param_descriptions %}
+        Args:
+        {% for param in method.param_descriptions %}
+            {{ param.name }}: {{ param.description }}
+        {% endfor %}
+        {% endif %}
+        
+        Returns:
+            {{ method.return_description if method.return_description else "None" }}
+        """
+        {{ method.implementation if method.implementation else "# TODO: Implement " + method.name }}
+    
+    {% endfor %}
+    {% else %}
+    def example_method(self, data):
+        """
+        Example method for demonstration.
+        
+        Args:
+            data: Input data to process
+            
+        Returns:
+            str: Processed result
+        """
+        if not data:
+            return None
+        return str(data).upper()
+    {% endif %}
+
+# Example usage
+if __name__ == "__main__":
+    {{ usage_example if usage_example else "# Create and use " + (class_name if class_name else "Assignment") }}
+{% endif %}
+{% elif assignment_type == "assignment_a" %}
+# Assignment A: {{ module.name }}
+# Students need to write tests for this code
+
+{% if content and content.strip() %}
+{{ content }}
+{% else %}
+class {{ class_name if class_name else "Assignment" }}:
+    """
+    {{ class_description if class_description else "Assignment class for testing practice" }}
+    """
+    
+    {% if methods %}
+    {% for method in methods %}
+    def {{ method.name }}(self{{ method.params if method.params else "" }}):
+        """{{ method.description if method.description else "Method for testing" }}"""
+        {{ method.implementation if method.implementation else "# Implementation provided for testing\n        pass" }}
+    
+    {% endfor %}
+    {% else %}
+    def process_data(self, data):
+        """Process input data and return result."""
+        if not data:
+            return None
+        return str(data).upper()
+    
+    def validate_input(self, value):
+        """Validate input and return boolean."""
+        return value is not None and len(str(value)) > 0
+    {% endif %}
+{% endif %}
+{% elif assignment_type == "assignment_b" %}
+# Assignment B: {{ module.name }}  
+# Students need to implement code to make tests pass
+
+{% if content and content.strip() %}
+{{ content }}
+{% else %}
+class {{ class_name if class_name else "Assignment" }}:
+    """
+    {{ class_description if class_description else "Assignment class for implementation practice" }}
+    """
+    
+    {% if methods %}
+    {% for method in methods %}
+    def {{ method.name }}(self{{ method.params if method.params else "" }}):
+        """
+        {{ method.description if method.description else "Method to implement" }}
+        
+        {% if method.requirements %}
+        Requirements:
+        {% for req in method.requirements %}
+        - {{ req }}
+        {% endfor %}
+        {% endif %}
+        """
+        # TODO: Implement this method to make the tests pass
+        {{ method.hint if method.hint else "pass" }}
+    
+    {% endfor %}
+    {% else %}
+    def implement_method(self, parameter):
+        """
+        Implement this method to make the tests pass.
+        
+        Args:
+            parameter: Input parameter to process
+            
+        Returns:
+            Expected return value based on tests
+        """
+        # TODO: Implement this method to make the tests pass
+        pass
+    {% endif %}
+{% endif %}
+{% endif %}

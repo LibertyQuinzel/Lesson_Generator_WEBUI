@@ -1,0 +1,27 @@
+# Production Docker Compose (minimal services)
+version: '3.8'
+
+services:
+  lesson-generator:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LOG_LEVEL=INFO
+      - LESSON_OUTPUT_DIR=/app/generated_lessons
+    volumes:
+      - lesson_data:/app/generated_lessons
+      - logs_data:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/system/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  lesson_data:
+  logs_data:

@@ -1,0 +1,187 @@
+[
+  {
+    "topic": {
+      "name": "Asynchronous Programming in Python",
+      "slug": "async_programming",
+      "description": "Master asynchronous programming patterns in Python using asyncio, async/await, and concurrent programming techniques",
+      "difficulty": "intermediate",
+      "estimated_hours": 8,
+      "concepts": [
+        "async/await",
+        "asyncio event loop",
+        "coroutines",
+        "tasks and futures",
+        "concurrent execution",
+        "async context managers",
+        "async generators"
+      ],
+      "learning_objectives": [
+        "Understand the difference between synchronous and asynchronous programming",
+        "Implement async/await patterns effectively in Python",
+        "Manage concurrent operations using asyncio",
+        "Handle async exceptions and error scenarios",
+        "Optimize performance with asynchronous programming"
+      ],
+      "prerequisites": [
+        "Python fundamentals",
+        "Object-oriented programming",
+        "Basic understanding of threads and processes"
+      ],
+      "modules": [
+        {
+          "name": "Async Fundamentals and Event Loop",
+          "type": "starter",
+          "focus_areas": ["async basics", "event loop", "coroutines"],
+          "code_complexity": "simple"
+        },
+        {
+          "name": "Async/Await Patterns",
+          "type": "assignment",
+          "focus_areas": ["async functions", "await expressions", "task creation"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Concurrent Execution",
+          "type": "assignment",
+          "focus_areas": ["gather", "as_completed", "task management"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Async Context Managers",
+          "type": "assignment",
+          "focus_areas": ["async with", "resource management", "cleanup"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Real-world Async Application",
+          "type": "project",
+          "focus_areas": ["web scraping", "API calls", "error handling"],
+          "code_complexity": "complex"
+        }
+      ]
+    }
+  },
+  {
+    "topic": {
+      "name": "Design Patterns in Python",
+      "slug": "design_patterns",
+      "description": "Learn essential design patterns and their implementation in Python for building maintainable and scalable applications",
+      "difficulty": "intermediate",
+      "estimated_hours": 12,
+      "concepts": [
+        "creational patterns",
+        "structural patterns",
+        "behavioral patterns",
+        "singleton pattern",
+        "factory pattern",
+        "observer pattern",
+        "decorator pattern"
+      ],
+      "learning_objectives": [
+        "Understand when and how to apply common design patterns",
+        "Implement creational, structural, and behavioral patterns in Python",
+        "Recognize code smells and refactor using appropriate patterns",
+        "Design maintainable and extensible software architectures"
+      ],
+      "prerequisites": [
+        "Python fundamentals",
+        "Object-oriented programming",
+        "Basic understanding of software architecture"
+      ],
+      "modules": [
+        {
+          "name": "Introduction to Design Patterns",
+          "type": "starter",
+          "focus_areas": ["pattern concepts", "SOLID principles", "pattern categories"],
+          "code_complexity": "simple"
+        },
+        {
+          "name": "Creational Patterns",
+          "type": "assignment",
+          "focus_areas": ["singleton", "factory", "builder"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Structural Patterns",
+          "type": "assignment",
+          "focus_areas": ["adapter", "decorator", "facade"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Behavioral Patterns",
+          "type": "assignment",
+          "focus_areas": ["observer", "strategy", "command"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Pattern Integration Project",
+          "type": "project",
+          "focus_areas": ["multiple patterns", "real application", "refactoring"],
+          "code_complexity": "complex"
+        }
+      ]
+    }
+  },
+  {
+    "topic": {
+      "name": "Advanced Testing Strategies",
+      "slug": "testing_strategies",
+      "description": "Master advanced testing techniques including TDD, mocking, property-based testing, and test automation",
+      "difficulty": "advanced",
+      "estimated_hours": 10,
+      "concepts": [
+        "test-driven development",
+        "unit testing",
+        "integration testing",
+        "mocking and stubbing",
+        "property-based testing",
+        "test automation",
+        "continuous integration"
+      ],
+      "learning_objectives": [
+        "Apply test-driven development methodology effectively",
+        "Design comprehensive test suites with appropriate coverage",
+        "Implement advanced mocking and stubbing techniques",
+        "Use property-based testing for robust validation",
+        "Set up automated testing pipelines"
+      ],
+      "prerequisites": [
+        "Python fundamentals",
+        "Basic testing with pytest",
+        "Understanding of software development lifecycle"
+      ],
+      "modules": [
+        {
+          "name": "TDD Fundamentals",
+          "type": "starter",
+          "focus_areas": ["red-green-refactor", "test first", "design through tests"],
+          "code_complexity": "simple"
+        },
+        {
+          "name": "Advanced Mocking",
+          "type": "assignment",
+          "focus_areas": ["mock objects", "patching", "dependency injection"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Property-Based Testing",
+          "type": "assignment",
+          "focus_areas": ["hypothesis", "property definition", "shrinking"],
+          "code_complexity": "complex"
+        },
+        {
+          "name": "Integration Testing",
+          "type": "assignment",
+          "focus_areas": ["test fixtures", "database testing", "API testing"],
+          "code_complexity": "moderate"
+        },
+        {
+          "name": "Testing Pipeline Project",
+          "type": "project",
+          "focus_areas": ["CI/CD", "automated testing", "coverage analysis"],
+          "code_complexity": "complex"
+        }
+      ]
+    }
+  }
+]

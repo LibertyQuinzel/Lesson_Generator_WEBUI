@@ -1,0 +1,124 @@
+/* Swiss International Design System Styles */
+
+.swiss-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+.swiss-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Typography Classes */
+.swiss-heading-1 {
+  font-size: 3.75rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.swiss-heading-2 {
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.swiss-heading-3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.swiss-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.swiss-small {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.swiss-micro {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Swiss Design Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .swiss-animate {
+    transition: all 200ms ease-out;
+  }
+}
+
+/* Swiss Design Components */
+.swiss-button {
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--swiss-black);
+  background: var(--swiss-white);
+  color: var(--swiss-black);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  transition: all 200ms ease-out;
+  cursor: pointer;
+}
+
+.swiss-button:hover {
+  background: var(--swiss-black);
+  color: var(--swiss-white);
+}
+
+.swiss-button--primary {
+  background: var(--swiss-black);
+  color: var(--swiss-white);
+}
+
+.swiss-button--primary:hover {
+  background: var(--swiss-gray-800);
+}
+
+.swiss-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--swiss-gray-300);
+  background: var(--swiss-white);
+  color: var(--swiss-black);
+  font-size: 0.875rem;
+  transition: border-color 200ms ease-out;
+}
+
+.swiss-input:focus {
+  outline: none;
+  border-color: var(--swiss-black);
+}
+
+/* Layout utilities */
+.swiss-section {
+  padding: 5rem 0;
+}
+
+.swiss-section--compact {
+  padding: 2.5rem 0;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+  .swiss-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .swiss-container {
+    padding: 0 1rem;
+  }
+}
