@@ -11,6 +11,21 @@ A production-grade educational content generation platform that transforms simpl
 
 This platform demonstrates advanced software engineering principles through an intelligent lesson generation system that creates complete educational experiences. Each generated lesson includes comprehensive project structures with over 40 files including interactive assignments, automated tests, documentation, and development tooling.
 
+## 🖼️ Screenshots
+
+Preview of the web interface (click images to view full size):
+
+<p align="center">
+  <a href="screenshots/home_generate_lessons.png"><img src="screenshots/home_generate_lessons.png" alt="Home - Generate Lessons" width="560"></a>
+  <a href="screenshots/lesson_generation_in_progress.png"><img src="screenshots/lesson_generation_in_progress.png" alt="Lesson Generation In Progress" width="560"></a>
+</p>
+
+<p align="center">
+  <a href="screenshots/lesson_history.png"><img src="screenshots/lesson_history.png" alt="Lesson History" width="420"></a>
+  <a href="screenshots/view_lesson_file_structure.png"><img src="screenshots/view_lesson_file_structure.png" alt="View Lesson File Structure" width="420"></a>
+</p>
+
+
 ## 🏗️ Technical Architecture
 
 ### Core Stack
