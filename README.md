@@ -16,8 +16,8 @@ This platform demonstrates advanced software engineering principles through an i
 Preview of the web interface (click images to view full size):
 
 <p align="center">
-  <a href="screenshots/home_generate_lessons.png"><img src="screenshots/home_generate_lessons.png" alt="Home - Generate Lessons" width="560"></a>
-  <a href="screenshots/lesson_generation_in_progress.png"><img src="screenshots/lesson_generation_in_progress.png" alt="Lesson Generation In Progress" width="560"></a>
+  <a href="screenshots/home_generate_lessons.png"><img src="screenshots/home_generate_lessons.png" alt="Home - Generate Lessons" width="420"></a>
+  <a href="screenshots/lesson_generation_in_progress.png"><img src="screenshots/lesson_generation_in_progress.png" alt="Lesson Generation In Progress" width="420"></a>
 </p>
 
 <p align="center">
