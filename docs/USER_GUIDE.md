@@ -183,10 +183,10 @@ export:
 ### Template System
 
 #### Custom Templates
-Create custom lesson templates in `custom_templates/`:
+Create custom lesson templates in `templates/`:
 
 ```python
-# custom_templates/my_exercise.py.j2
+# templates/my_exercise.py.j2
 """
 {{ exercise_title }}
 {{ "=" * exercise_title|length }}

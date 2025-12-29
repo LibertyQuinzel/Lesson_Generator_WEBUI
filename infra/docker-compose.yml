@@ -14,7 +14,7 @@ services:
     volumes:
       - lesson_data:/app/generated_lessons
       - logs_data:/app/logs
-      - ./custom_templates:/app/custom_templates:ro
+      - ../templates:/app/custom_templates:ro
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/system/health"]

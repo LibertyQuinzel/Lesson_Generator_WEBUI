@@ -151,7 +151,7 @@ lesson-generator create "Advanced Python" \
 
 # Using custom templates
 lesson-generator create "Web Development" \
-    --templates ./custom_templates \
+  --templates ./templates \
     --difficulty intermediate \
     --verbose
 
@@ -409,8 +409,8 @@ lesson-generator create "Topic" --cost-efficient --verbose
 
 ## 📚 Documentation
 
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Detailed system design
-- **[USER_GUIDE.md](USER_GUIDE.md)** - Comprehensive user guide
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Detailed system design
+- **[USER_GUIDE.md](docs/USER_GUIDE.md)** - Comprehensive user guide
 
 ## 🧪 Testing & Quality
 
