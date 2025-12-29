@@ -1,0 +1,3 @@
+[submodule "reference_lesson"]
+	path = reference_lesson
+	url = git@github.com:LibertyQuinzel/defensive_programming_lesson.git
